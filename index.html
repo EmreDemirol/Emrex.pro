@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmreX.pro</title>
+    
+    <!-- Google Fonts: Aldrich ve Cherish -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Cherish&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background-color: #141416;
+            font-family: 'Inter', sans-serif;
+            color: #e4e4e7;
+        }
+
+        /* Sol Menü (Sidebar) */
+        .sidebar {
+            width: 260px;
+            background-color: #18181b;
+            border-right: 1px solid #27272a;
+            display: flex;
+            flex-direction: column;
+            padding: 28px 20px;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        /* EmreX.pro Logo Alanı */
+        .brand-logo {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 40px;
+            padding-left: 8px;
+            text-decoration: none;
+        }
+
+        /* Parlak Gümüş (Aldrich Fontu) */
+        .silver-text {
+            font-family: 'Aldrich', sans-serif;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 35%, #94A3B8 52%, #F8FAFC 75%, #CBD5E1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.22));
+        }
+
+        /* Parlak Altın ve Hafif Büyük X Harfi (Cherish / Cherishy Fontu) */
+        .gold-x {
+            font-family: 'Cherish', 'Cherishy', cursive;
+            font-size: 46px;
+            line-height: 0.8;
+            margin: 0 3px;
+            padding: 0 4px;
+            background: linear-gradient(180deg, #FFFBEB 0%, #FDE047 28%, #D97706 52%, #FFD700 75%, #FEF08A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.45));
+            display: inline-block;
+            transform: translateY(4px);
+        }
+
+        /* Menü Başlığı ve Seçenekler */
+        .menu-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #71717a;
+            margin-bottom: 12px;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .nav-item {
+            font-family: 'Aldrich', sans-serif;
+            font-size: 16px;
+            color: #d4d4d8;
+            padding: 12px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background-color: #27272a;
+            color: #ffffff;
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.12) 0%, rgba(24, 24, 27, 0) 100%);
+            border-left: 3px solid #fbbf24;
+            color: #ffffff;
+        }
+
+        /* Sağ İçerik Alanı (Üçgenin Yüklendiği Bölüm) */
+        .content-area {
+            flex: 1;
+            height: 100vh;
+            background-color: #0f172a;
+            position: relative;
+        }
+
+        .tool-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sol Menü -->
+    <aside class="sidebar">
+        <a href="/" class="brand-logo">
+            <span class="silver-text">Emre</span><span class="gold-x">X</span><span class="silver-text">.pro</span>
+        </a>
+
+        <div class="menu-label">Seçenekler</div>
+        <ul class="nav-list">
+            <li class="nav-item active" onclick="loadTool('interactive-triangle.html', this)">
+                Üçgen
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Sağ İçerik Alanı (Mevcut Üçgen Dosyanızı Çağırır) -->
+    <main class="content-area">
+        <iframe id="app-frame" class="tool-frame" src="interactive-triangle.html" title="Üçgen Aracı"></iframe>
+    </main>
+
+    <script>
+        function loadTool(url, element) {
+            document.getElementById('app-frame').src = url;
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
